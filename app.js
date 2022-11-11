@@ -46,6 +46,10 @@ app.use(express.urlencoded({extended:false}))
 app.use(cors())
 app.use(cookieParser())
 
+app.get('/', (req, res) => {
+    res.send('Success')
+})
+
 app.use('/api', loginRouter.start())
 app.use('/api/cart', cartRouter.start())
 app.use('/api/products', productsRouter.start())
