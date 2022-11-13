@@ -26,7 +26,8 @@ class UsersMongoDAO extends UsersBaseDAO {
     }
 
     createUser = async (newUser, cb) => {
-        return await Users.create(newUser)
+        const userCreated = await Users.create(newUser)
+        return cb(userCreated)
     }
 }
 

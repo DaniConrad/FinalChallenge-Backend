@@ -29,7 +29,7 @@ class authMiddlewares {
       passport.authenticate('signup', async (err, user, info) => {
           try {
               if (!user || err) return res.status(401).json({ user: false })
-              res.json(user._id)
+              res.status(200).json({userID: user._id})
            }
            catch(e) {
                return next(e)

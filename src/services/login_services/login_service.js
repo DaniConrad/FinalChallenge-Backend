@@ -27,8 +27,8 @@ class LoginService {
         await this.DAO.users.getByEmailWithCallBack(entryEmail, cb)
     }
 
-    createUser = async (newUser) => {
-        const user = await this.DAO.users.createUser(newUser)
+    createUser = async (newUser, cb) => {
+        return await this.DAO.users.createUser(newUser, cb)
     }
 
     verifyPass = async (entryPass, userFind) => {

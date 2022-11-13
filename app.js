@@ -12,7 +12,6 @@ require('dotenv').config();
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const ChatRouter = require('./src/routes/chat_router')
-const MongoStore = require('connect-mongo')
 // -- Initializers 
 
 const app = express()

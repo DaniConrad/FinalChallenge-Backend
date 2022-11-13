@@ -1,1 +1,0 @@
-La db está conectando en cart_service.js.
