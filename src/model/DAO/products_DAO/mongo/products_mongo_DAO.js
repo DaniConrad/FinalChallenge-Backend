@@ -10,7 +10,7 @@ class ProductsMongoDAO extends ProductsBaseDAO {
     }
 
     saveProduct = async (data) => {
-        return await new Products(data).save()
+        return await new Products(data).save() ? true : false
     }
 
     getProductById = async (prodID) => {
@@ -26,7 +26,7 @@ class ProductsMongoDAO extends ProductsBaseDAO {
     }
 
     deleteByID = async (prodID) => {
-        return await Products.findOneAndDelete({_id: prodID})
+        return await Products.findOneAndDelete({_id: prodID}) ? true : false
     }
 
 }

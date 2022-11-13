@@ -13,7 +13,7 @@ class authMiddlewares {
               
               req.login(user, { session: false }, async (err) => {
                 if (err) return next(err)
-                const body = { _id: user._id, email: user.email, name: user.name }
+                const body = { _id: user._id, email: user.email, name: user.name, role: user.role }
       
                 const token = jwt.sign({ user: body }, 'top_secret')
                 return res.status(200).json({ body, token })

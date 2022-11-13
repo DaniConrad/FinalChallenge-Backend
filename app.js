@@ -12,6 +12,7 @@ require('dotenv').config();
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const ChatRouter = require('./src/routes/chat_router')
+const startDB = require('./src/config/db.config')
 // -- Initializers 
 
 const app = express()
@@ -56,7 +57,8 @@ app.use('/api/orders', ordersRouter.start())
 
 // -- Launch
 
-const server = httpServer.listen(PORT, ()=>{
+const server = httpServer.listen(PORT, () => {
     Logger.info(`Server http on ${PORT}...`)
+    startDB()
 }) 
-server.on('error', error => console.error('Error on server', error)) 
+server.on('error', error => Logger.error(error)) 

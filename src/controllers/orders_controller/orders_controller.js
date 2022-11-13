@@ -8,7 +8,6 @@ class OrdersController {
         this.ordersDTO = new OrdersDTO()
     }
     getOrders = async (req, res) => {
-        console.log('here');
         try {
             const userID = req.params.userID
             res.status(200).json(await this.ordersDTO.getOrders(userID))

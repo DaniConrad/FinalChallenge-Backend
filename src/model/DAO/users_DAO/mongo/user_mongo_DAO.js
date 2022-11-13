@@ -29,6 +29,10 @@ class UsersMongoDAO extends UsersBaseDAO {
         const userCreated = await Users.create(newUser)
         return cb(userCreated)
     }
+
+    verifyRole = async userID => {
+       return await Users.findOne({_id : userID, role : 'admin'}) ? true : false
+    }
 }
 
 module.exports = UsersMongoDAO

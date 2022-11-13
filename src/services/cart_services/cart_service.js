@@ -11,7 +11,6 @@ class CartService {
     constructor() {
         this.DAO = FactoryDAO(config.TYPE_DB)
         this.ordersService = new OrdersService()
-        connectMongo()
     }
 
     async saveCart(obj, userID) {

@@ -4,8 +4,8 @@ class LoginDTO {
     constructor(){}
 
     sendUser(user) {
-        const {_id, email, name, phone} = user
-        return {_id, email, name, phone}
+        const {_id, email, name, phone, role} = user
+        return {_id, email, name, phone, role}
     }
 }
 

@@ -35,7 +35,7 @@ class LoginService {
         return await bcryptjsHelper.comparePass(entryPass, userFind.password) 
     }
 
-    async getActualUser(userID){
+    getActualUser = async (userID) => {
         const searchUser = await this.DAO.users.verifyUser(userID)
 
         const user = {
@@ -45,6 +45,10 @@ class LoginService {
         }
 
         return user
+    }
+
+    verifyRole = async (userID) => {
+        return await this.DAO.users.verifyRole(userID)
     }
 }
 

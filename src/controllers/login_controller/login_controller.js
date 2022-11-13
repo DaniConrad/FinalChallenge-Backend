@@ -1,8 +1,8 @@
 const LoginService = require('../../services/login_services/login_service')
-const path = require('path')
 const LoginDTO = require('../../model/DTO/login_DTO')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
+const Logger = require('../../logs/model/logs4js.model')
 // --
 
 class LoginController {
@@ -26,7 +26,10 @@ class LoginController {
                 })
             }
             catch(e) {
-                return next(e)
+                return (
+                    next(e),
+                    Logger.warn(e)
+                )
             }
         })(req, res, next)
     }
@@ -39,7 +42,10 @@ class LoginController {
                 res.json(user)
              }
              catch(e) {
-                 return next(e)
+                return (
+                    next(e),
+                    Logger.warn(e)
+                )
              }
          })(req, res, next)
     }
