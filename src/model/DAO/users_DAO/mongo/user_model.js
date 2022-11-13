@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
         phone: String,
         password: String,
         role: { type: String, default: 'user' } 
-
-    })
-)
+    },
+    { timestamps: true }
+))
 
 module.exports = UserModel;

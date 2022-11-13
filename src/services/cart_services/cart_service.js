@@ -91,8 +91,7 @@ class CartService {
                         const {name, img, price, desc, code} = await this.DAO.products.getProductById(prodID)
                         prodsInCart.push({name, img, price, desc, code, prodQuantity})
                     }
-        } 
-        console.log(customer);
+        }
         await this.ordersService.saveOrder(userID, verifyCart.products)
         await sendEmail(customer, prodsInCart)
         await this.DAO.cart.deleteCartByID(cartID)

@@ -2,6 +2,8 @@ const { createTransport } = require('nodemailer')
 const ejs = require('ejs')
 const path = require('path')
 require('dotenv').config();
+const Logger = require('../../logs/model/logs4js.model')
+
 
 const sendEmail = async (customer, products) => {
 
@@ -25,7 +27,7 @@ const sendEmail = async (customer, products) => {
             subject: `Confirmación de tu pedido`,
             html: body
         })
-    .catch(e => console.log('error:', e))
+    .catch(e => Logger.error(e))
     })
 }
 
