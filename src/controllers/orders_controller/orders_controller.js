@@ -14,7 +14,6 @@ class OrdersController {
         } catch (error) {
             Logger.error(error)
             res.status(404)
-
         }
         
     }

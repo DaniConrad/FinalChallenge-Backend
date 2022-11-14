@@ -92,9 +92,9 @@ class CartService {
                         prodsInCart.push({name, img, price, desc, code, prodQuantity})
                     }
         }
-        await this.ordersService.saveOrder(userID, verifyCart.products)
         await sendEmail(customer, prodsInCart)
         await this.DAO.cart.deleteCartByID(cartID)
+        return await this.ordersService.saveOrder(userID, verifyCart.products)
     }
 }
 
