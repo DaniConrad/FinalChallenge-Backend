@@ -8,10 +8,7 @@ class ProductsDTO {
     }
 
     editProductByID = async (prodID, data) => {
-        const {name, img, price, desc, stock, code} = data
-
-        const newData = {name, img, price, desc, stock, code}
-        return await this.productsService.editProductByID(prodID, newData)
+        return await this.productsService.editProductByID(prodID, data)
     }
 
     getProducts = async prodID => {

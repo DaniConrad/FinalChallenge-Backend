@@ -9,6 +9,7 @@ const ProductsModel = mongoose.model(
         desc: String,
         stock: Number,
         code: String
-    })
-)
+    },
+    { timestamps: true }
+))
 module.exports = ProductsModel;
