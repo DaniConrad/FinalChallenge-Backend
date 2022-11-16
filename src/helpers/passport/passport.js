@@ -15,7 +15,7 @@ const loginService = new LoginService()
 passport.use('login', new LocalStrategy(
     async (entryEmail, entryPassword, done) => {
         try {
-            const userFind = await loginService.getByEmail(entryEmail)
+            const userFind = await loginService.getByEmail(entryEmail.toLowerCase())
             if (!userFind) return done(null, false, { message: 'user not found' })
                 
             const validate = await loginService.verifyPass(entryPassword, userFind)
