@@ -7,12 +7,16 @@ class OrderService {
         this.DAO = FactoryDAO(config.TYPE_DB)
     }
 
-    async saveOrder(userID, cart){
-        return await this.DAO.order.saveOrder(userID, cart)
+    async saveOrder(userID, prodsInCart){
+        return await this.DAO.order.saveOrder(userID, prodsInCart)
     }
 
     async getOrders(userID){
         return await this.DAO.order.getOrders(userID)
+    }
+
+    async getOrdersByID(orderID){
+        return await this.DAO.order.getOrdersByID(orderID)
     }
 
 }

@@ -5,7 +5,7 @@ require('dotenv').config();
 const Logger = require('../../logs/model/logs4js.model')
 
 
-const sendEmail = async (customer, products) => {
+const sendEmail = async (customer, products, order) => {
 
     const mail = process.env.USER_MAIL
 
@@ -24,7 +24,7 @@ const sendEmail = async (customer, products) => {
         transporter.sendMail({
             from: mail,
             to: customer.email,
-            subject: `Confirmación de tu pedido`,
+            subject: `Confirmación de tu pedido - Orden: ${order}`,
             html: body
         })
     .catch(e => Logger.error(e))

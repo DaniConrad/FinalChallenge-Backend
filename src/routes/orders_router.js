@@ -13,6 +13,7 @@ class OrdersRouter {
 
     start() {
         router.get('/:userID', this.ordersController.getOrders)
+        router.get('/:orderID/order', this.ordersController.getOrdersByID)
 
         return router
     }

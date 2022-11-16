@@ -87,3 +87,61 @@
       at Query.cast (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\query.js:5312:12),
   valueType: 'string'
 }
+[2022-11-15T19:11:45.563] [ERROR] all - CastError: Cast to embedded failed for value "{ product: '63717ba329ba23e449d4424c', quantity: NaN }" (type Object) at path "products" because of "CastError"
+    at model.Query.exec (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\query.js:4884:21)
+    at CartMongoDAO.updateCart (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\src\model\DAO\cart_DAO\mongo\cart_mongo_DAO.js:50:10)
+    at CartService.saveCart (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\src\services\cart_services\cart_service.js:32:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async saveCart (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\src\controllers\cart_controller\cart_controller.js:23:22) {
+  messageFormat: undefined,
+  stringValue: `"{ product: '63717ba329ba23e449d4424c', quantity: NaN }"`,
+  kind: 'embedded',
+  value: { product: '63717ba329ba23e449d4424c', quantity: NaN },
+  path: 'products',
+  reason: CastError: Cast to Number failed for value "NaN" (type number) at path "quantity"
+      at SchemaNumber.cast (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schema\number.js:378:11)
+      at SchemaType.applySetters (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schematype.js:1201:12)
+      at EmbeddedDocument.$set (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\document.js:1367:22)
+      at EmbeddedDocument.$set (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\document.js:1092:16)
+      at EmbeddedDocument.Document (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\document.js:166:12)
+      at EmbeddedDocument.Subdocument (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\types\subdocument.js:31:12)
+      at EmbeddedDocument.ArraySubdocument [as constructor] (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\types\ArraySubdocument.js:36:15)
+      at new EmbeddedDocument (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schema\documentarray.js:134:17)
+      at DocumentArrayPath.cast (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schema\documentarray.js:507:22)
+      at SchemaType.applySetters (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schematype.js:1201:12) {
+    stringValue: '"NaN"',
+    messageFormat: undefined,
+    kind: 'Number',
+    value: NaN,
+    path: 'quantity',
+    reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+    
+      assert.ok(!isNaN(val))
+    
+        at castNumber (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\cast\number.js:27:10)
+        at SchemaNumber.cast (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schema\number.js:376:12)
+        at SchemaType.applySetters (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schematype.js:1201:12)
+        at EmbeddedDocument.$set (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\document.js:1367:22)
+        at EmbeddedDocument.$set (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\document.js:1092:16)
+        at EmbeddedDocument.Document (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\document.js:166:12)
+        at EmbeddedDocument.Subdocument (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\types\subdocument.js:31:12)
+        at EmbeddedDocument.ArraySubdocument [as constructor] (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\types\ArraySubdocument.js:36:15)
+        at new EmbeddedDocument (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schema\documentarray.js:134:17)
+        at DocumentArrayPath.cast (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\schema\documentarray.js:507:22) {
+      generatedMessage: true,
+      code: 'ERR_ASSERTION',
+      actual: false,
+      expected: true,
+      operator: '=='
+    },
+    valueType: 'number'
+  },
+  valueType: 'Object'
+}
+[2022-11-15T19:29:37.568] [ERROR] all - MongooseError: document must have an _id before saving
+    at G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\node_modules\mongoose\lib\model.js:297:18
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+[2022-11-15T19:39:50.683] [ERROR] all - TypeError: Cannot read properties of null (reading 'length')
+    at OrdersDTO.getOrders (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\src\model\DTO\ordersDTO.js:14:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getOrders (G:\DaNiRulz\Learning\Coderhouse\Backend\desafios\FinalConFront\backend\src\controllers\orders_controller\orders_controller.js:13:34)
