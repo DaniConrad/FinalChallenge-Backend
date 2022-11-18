@@ -16,7 +16,7 @@ class LoginController {
         passport.authenticate('login', async (err, user, info) => {
            try {
                 if (!user) return res.json(info)
-                  
+                
                 req.login(user, { session: false }, async (err) => {
                     if (err) return next(err)
                     const body = { _id: user._id, email: user.email, name: user.name }
@@ -52,7 +52,8 @@ class LoginController {
     
 
     logout = async (req, res) => {
-        req.session.destroy()
+        // this.session.destroy()
+        console.log(this.session);
     }
 
     protectedRoute = (req, res) => {
