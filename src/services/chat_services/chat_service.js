@@ -12,6 +12,10 @@ class CartService {
     async getMessages(){
         return this.DAO.chat.getMessages()
     } 
+
+    async saveMessage(userID, message){
+        return this.DAO.chat.saveMessage(userID, message)
+    } 
 }
 
 // --

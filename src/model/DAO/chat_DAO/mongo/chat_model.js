@@ -4,9 +4,7 @@ const ChatModel = mongoose.model(
     'Chat', 
     new mongoose.Schema({
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-        messages: [{
-            message: String
-        }],
+        message: { type: String }
     },
     { timestamps: true }
 ))

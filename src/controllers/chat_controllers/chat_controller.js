@@ -1,38 +1,17 @@
-
+const Logger = require('../../logs/model/logs4js.model')
+const ChatServices = require('../../services/chat_services/chat_service')
 
 class ChatController {
 
     constructor() {
-        
+        this.chatService = new ChatServices()
     }
 
-    startChat = async (req, res) => {
+    saveMessage = async (user, message) => {
         try {
-            console.log(1);
-            io.on("connection", (socket) => {
-                let user;
-            
-                socket.on("conectado", (user) => {
-                    console.log(user);
-                socket.broadcast.emit("mensajes", {
-                    user: user,
-                    mensaje: `${user} ha entrado en la sala del chat`,
-                });
-                });
-            
-                socket.on("mensaje", (user, mensaje) => {
-                io.emit("mensajes", { user, mensaje });
-                });
-            
-                socket.on("disconnect", () => {
-                io.emit("mensajes", {
-                    server: "Server",
-                    mensaje: `${user} ha abandonado la sala`,
-                });
-                });
-            });
+            this.chatService.saveMessage(user._id, message)
         } catch (error) {
-            console.log("🚀 ~ file: chat_controller.js ~ line 23 ~ ChatController ~ startChat ~ error", error)
+            Logger.error("chat_controller.js", error)
             
         }
         

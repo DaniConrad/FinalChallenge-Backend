@@ -11,20 +11,22 @@ const cors = require('cors')
 require('dotenv').config();
 const path = require('path')
 const cookieParser = require('cookie-parser')
-const ChatRouter = require('./src/routes/chat_router')
+const ChatController = require('./src/controllers/chat_controllers/chat_controller')
 const startDB = require('./src/config/db.config')
-// -- Initializers 
+const { Server: ServerSocket } = require("socket.io");
 
+// -- Initializers 
 const app = express()
 const PORT = process.env.PORT || 8080 
 const httpServer = http.createServer(app);
+
+//  Initializing routers 
 const cartRouter = new CartRouter()
 const productsRouter = new ProductsRouter()
 const loginRouter = new LoginRouter()
 const ordersRouter = new OrdersRouter()
-const chatRouter = new ChatRouter()
-// -- Middlewares
 
+// -- Middlewares
 app.use(session({
     secret: 'secret',
     resave: false,
@@ -35,8 +37,6 @@ app.use(session({
         httpOnly: false
     }
 }))
-
-
 app.use(passport.initialize())
 app.use(passport.session())
 require('./src/helpers/passport/passport')
@@ -46,17 +46,40 @@ app.use(express.urlencoded({extended:false}))
 app.use(cors())
 app.use(cookieParser())
 
+// main route advise 
 app.get('/', (req, res) => {
     res.send('Success!')
 })
 
+// Routers 
 app.use('/api', loginRouter.start())
 app.use('/api/cart', cartRouter.start())
 app.use('/api/products', productsRouter.start())
 app.use('/api/orders', ordersRouter.start())
 
-// -- Launch
+const chatController = new ChatController()
 
+// websocket 
+const io = new ServerSocket(httpServer, {
+    cors: {
+      origin: "http://localhost:3000",
+      credentials: true,
+    },
+  });
+  
+  io.on("connection", (socket) => {
+    Logger.info(`${socket.id} User connected`);
+    socket.on("message", async (user, message) => {
+      await chatController.saveMessage(user, message)
+    //   socket.broadcast.emit("message", {
+    //     body: message.body,
+    //     from: message.from,
+    //   });
+    });
+  });
+  
+
+// -- Launch
 const server = httpServer.listen(PORT, () => {
     Logger.info(`Server http on ${PORT}...`)
     startDB()
