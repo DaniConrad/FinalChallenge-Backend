@@ -12,13 +12,7 @@ class ChatRouter {
         this.chatController = new ChatController()
     }
 
-    start(server1) {
-        const io = require('socket.io')(server1, {
-            cors: {
-                origin: "http://localhost:3000"
-            }
-        });
-        router.get('/chat', this.chatController.startChat)
+    start() {
 
         return router
     }

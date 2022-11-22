@@ -12,9 +12,15 @@ class ChatController {
             this.chatService.saveMessage(user._id, message)
         } catch (error) {
             Logger.error("chat_controller.js", error)
-            
         }
-        
+    }
+
+    getMessages = async () => {
+        try {
+            return this.chatService.getMessages()
+        } catch (error) {
+            Logger.error("chat_controller.js", error)
+        }
     }
     
 }
