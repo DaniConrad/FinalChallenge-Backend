@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken')
 class authMiddlewares {
     constructor(){}
 
+    // Passport functions have references in helpers/passport folder.
+    
     login(req, res, next){
         passport.authenticate('login', async (err, user, info) => {
             try {
